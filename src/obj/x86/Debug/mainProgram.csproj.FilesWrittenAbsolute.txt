@@ -1,0 +1,10 @@
+/Users/oomigie/git/test-console/test-console/obj/x86/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
+/Users/oomigie/git/test-console/test-console/bin/Debug/test-console.exe.mdb
+/Users/oomigie/git/test-console/test-console/bin/Debug/test-console.exe
+/Users/oomigie/git/test-console/test-console/obj/x86/Debug/test-console.exe
+/Users/oomigie/git/test-console/test-console/obj/x86/Debug/test-console.exe.mdb
+/Users/oomigie/git/report-tool/src/obj/x86/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
+/Users/oomigie/git/report-tool/src/bin/Debug/test-console.exe.mdb
+/Users/oomigie/git/report-tool/src/bin/Debug/test-console.exe
+/Users/oomigie/git/report-tool/src/obj/x86/Debug/test-console.exe
+/Users/oomigie/git/report-tool/src/obj/x86/Debug/test-console.exe.mdb
