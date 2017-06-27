@@ -33,25 +33,20 @@ namespace mainProgram
         public void ParseDirectory(string dir)
         {
             Dictionary<string, int> counter = new Dictionary<string, int>();
-
+            DirectoryInfo dirInfo = new DirectoryInfo(dir);
 
             try
             {
                 Console.WriteLine("cwd:" + dir);
 
 
-                foreach(string path in Directory.EnumerateFiles(dir))
+                foreach(FileInfo file in dirInfo.EnumerateFiles())
                 {
-                    string[] file = path.Split('.');
-                    string fileExt = file[1];
-                    string [] tree = file[0].Split('/');
-                    string fileName = tree[tree.Length - 1];
+                    string fileName = file.Name;
+                    string fileExt = file.Extension;
+                    long size = file.Length;
+                        
 
-                    if (fileName.Length < 1 && fileExt.Length > 0)
-                    {
-                        fileName = "." + fileExt;
-                        fileExt = SystemExt;
-                    }
                     if (counter.ContainsKey(fileExt) == true) 
                     {
                         counter[fileExt] = (int)counter[fileExt] + 1;
