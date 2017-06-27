@@ -35,8 +35,10 @@ namespace mainProgram
 
         public Reporter()
         {
-            Console.WriteLine("Reporter ready...");
-
+            Console.WriteLine("\t\t************************************************");
+            Console.WriteLine("\t\t*             Directory stats tool             *");
+            Console.WriteLine("\t\t************************************************\n");
+           
         }
             
 
@@ -105,6 +107,7 @@ namespace mainProgram
             }
             catch(Exception e)
             {
+                // TODO show correct usage
                 Console.WriteLine("Error" + e);
             }
         }

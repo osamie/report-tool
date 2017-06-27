@@ -7,9 +7,16 @@ namespace mainProgram
     {
         public static void Main(string [] args)
         {
+            
             Reporter r = new Reporter();
+            String input = "";
 
-            r.ParseDirectory("/Users/oomigie");
+            while(input != "#Q")
+            {
+                Console.WriteLine("Enter an absolute Directory path below. For example, /User/oomigie");
+                input = Console.ReadLine();
+                r.ParseDirectory(input);
+            }
              
         }
     }
