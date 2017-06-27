@@ -89,8 +89,8 @@ namespace mainProgram
                         currentMaxFile = file;
                     }
 
-                    Console.Write("filename: " + fileName + "\t");
-                    Console.Write("extension: " + fileExt + "\n");
+//                    Console.Write("filename: " + fileName + "\t");
+//                    Console.Write("extension: " + fileExt + "\n");
                 }
 
                 foreach(KeyValuePair<string, FileDetail> entry in counter) 
@@ -100,7 +100,7 @@ namespace mainProgram
 
                 if (currentMaxFile != null)
                 {
-                    Console.WriteLine("filename {0} was the largest file - {1} bytes.", currentMaxFile.Name, currentMaxFile.Length);
+                    Console.WriteLine("filename {0} was the largest file - {1} bytes.\n", currentMaxFile.Name, currentMaxFile.Length);
                 }
 
 
