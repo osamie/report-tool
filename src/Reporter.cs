@@ -21,11 +21,13 @@ namespace mainProgram
         {
             public long totalSize; 
             public int count;
+            public string extension;
 
-            public FileDetail(long size, int num)
+            public FileDetail(long size, int num, string ext)
             {
                 totalSize = size;
                 count = num;
+                extension = ext;
             }
         }
 
@@ -47,6 +49,8 @@ namespace mainProgram
             Dictionary<string, FileDetail> counter = new Dictionary<string, FileDetail>();
             DirectoryInfo dirInfo = new DirectoryInfo(dir);
 
+            FileInfo currentMaxFile = null;
+
             try
             {
                 Console.WriteLine("cwd:" + dir);
@@ -59,7 +63,11 @@ namespace mainProgram
                     long size = file.Length;
 
                     FileDetail fileDetail;
-                        
+
+                    if (currentMaxFile == null)
+                    {
+                        currentMaxFile = file;
+                    }
 
                     if (counter.ContainsKey(fileExt) == true) 
                     {
@@ -70,7 +78,13 @@ namespace mainProgram
                     } 
                     else 
                     {
-                        counter[fileExt] =  new FileDetail(file.Length, 1);
+                        fileDetail = new FileDetail(file.Length, 1, file.Extension);
+                        counter[fileExt] = fileDetail; 
+                    }
+
+                    if (file.Length > currentMaxFile.Length) 
+                    {
+                        currentMaxFile = file;
                     }
 
                     Console.Write("filename: " + fileName + "\t");
@@ -81,6 +95,12 @@ namespace mainProgram
                 {
                     Console.WriteLine("{0} extension had {1} file(s) of {2} bytes",entry.Key, entry.Value.count, entry.Value.totalSize);
                 }
+
+                if (currentMaxFile != null)
+                {
+                    Console.WriteLine("filename {0} was the largest file - {1} bytes.", currentMaxFile.Name, currentMaxFile.Length);
+                }
+
 
             }
             catch(Exception e)
