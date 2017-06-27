@@ -9,7 +9,7 @@ namespace mainProgram
         {
             Reporter r = new Reporter();
 
-            r.ShowFiles();
+            r.ParseDirectory("/Users/oomigie");
              
         }
     }
