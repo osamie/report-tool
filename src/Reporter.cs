@@ -17,6 +17,18 @@ namespace mainProgram
     public class Reporter
     {
 
+        public struct FileDetail
+        {
+            public long totalSize; 
+            public int count;
+
+            public FileDetail(long size, int num)
+            {
+                totalSize = size;
+                count = num;
+            }
+        }
+
         private const string SystemExt = "system";
 
         public Reporter()
@@ -32,7 +44,7 @@ namespace mainProgram
          */
         public void ParseDirectory(string dir)
         {
-            Dictionary<string, int> counter = new Dictionary<string, int>();
+            Dictionary<string, FileDetail> counter = new Dictionary<string, FileDetail>();
             DirectoryInfo dirInfo = new DirectoryInfo(dir);
 
             try
@@ -45,42 +57,36 @@ namespace mainProgram
                     string fileName = file.Name;
                     string fileExt = file.Extension;
                     long size = file.Length;
+
+                    FileDetail fileDetail;
                         
 
                     if (counter.ContainsKey(fileExt) == true) 
                     {
-                        counter[fileExt] = (int)counter[fileExt] + 1;
+                        fileDetail = (FileDetail)counter[fileExt];
+
+                        fileDetail.count++;
+                        fileDetail.totalSize = fileDetail.totalSize + file.Length;
                     } 
                     else 
                     {
-                        counter[fileExt] =  1;
+                        counter[fileExt] =  new FileDetail(file.Length, 1);
                     }
-
-
 
                     Console.Write("filename: " + fileName + "\t");
                     Console.Write("extension: " + fileExt + "\n");
                 }
 
-                foreach(KeyValuePair<string, int> entry in counter) 
+                foreach(KeyValuePair<string, FileDetail> entry in counter) 
                 {
-                    Console.WriteLine("{0}:{1}",entry.Key, entry.Value);
+                    Console.WriteLine("{0} extension had {1} file(s) of {2} bytes",entry.Key, entry.Value.count, entry.Value.totalSize);
                 }
 
             }
             catch(Exception e)
             {
                 Console.WriteLine("Error" + e);
-
-
             }
-        }
-
-        public void RecordFileTypes()
-        {
-            
-
-
         }
     }
 }
